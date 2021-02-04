@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            height: 150px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="row">
+    <div class="column" style="background-color:#f2f2f2;">
+        <h2>Params</h2>
+
+        <form action="/sendParams" method="post" id="sendParam">
+            Pages: <input type="text" name="pages_number"></input>
+            <br>
+            City: <input type="text" name="city"></input>
+            <input type="submit" value="SendParams"></input>
+        </form>
+
+        Check Page: <select name="page_name" form="sendParam">
+            <option value="gratka">gratka</option>
+            <option value="gumtree">gumtree</option>
+        </select>
+
+    </div>
+    <div class="column" style="background-color:#f2f2f2;">
+        <h2> Filtering </h2>
+        <form action="/getData" method="post">
+            Min Price: <input type="text" name="from_price"></input>
+            Max Price: <input type="text" name="to_price"></input>
+            <br>
+            Min Area: <input type="text" name="from_area"></input>
+            Max Area: <input type="text" name="to_area"></input>
+            <br>
+            <input type="submit" value="GetData"></input>
+        </form>
+    </div>
+    <div class="column" style="background-color:#f2f2f2;">
+        <h2>Save Data</h2>
+        <form action="/saveData" method="post">
+            Path: <input type="text" name="path"></input>
+            <input type="submit" value="SaveData"></input>
+        </form>
+    </div>
+</div>
+
+{% for table in tables %}
+{{titles[loop.index]}}
+{{ table|safe }}
+{% endfor %}
+</body>
+</html>

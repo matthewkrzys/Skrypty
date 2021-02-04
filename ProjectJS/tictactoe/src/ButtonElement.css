@@ -1,0 +1,26 @@
+.square {
+  background: #fff;
+  flex: 1 0 25%;
+  border: 2px solid black;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 70px;
+  margin-right: -1px;
+  margin-top: -1px;
+  margin: 5px;
+  padding: 5px;
+  width: 50px;
+}
+  .square:hover {
+    border: 2px solid red;
+  }
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
